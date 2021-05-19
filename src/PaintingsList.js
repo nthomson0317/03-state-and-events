@@ -1,6 +1,7 @@
 import React from 'react';
 import Painting from './Painting';
 
+
 // const PaintingsList = (props) => {
 
 //   return (
@@ -21,18 +22,36 @@ import Painting from './Painting';
 // Class Component
 
 class PaintingsList extends React.Component{
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     title: 'Paintings List'
+  //   }
+  // }
+  state = {
+    hideList: false
+  }
   render(){
-    return(<div>
-       <h1>Paintings</h1>
-      {
-      this.props.paintings.map(painting => (
-        <Painting
-          key={painting.id}
-          painting={painting}
-        />
-      ))
-      }
-    </div>)
+    if (this.state.hideList) {
+      return (
+        <h1>List is Hidden!</h1>
+      )
+    }
+      else {
+      return (
+      <div>
+        <h1>Paintings</h1>
+        {
+          this.props.paintings.map(painting => (
+            <Painting
+              key={painting.id}
+              painting={painting}
+          />
+        ))
+        }
+      </div>
+      )
+    }
   }
 }
 
